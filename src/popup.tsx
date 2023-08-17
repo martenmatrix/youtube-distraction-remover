@@ -1,30 +1,19 @@
-import { useState } from "react"
+import styled from 'styled-components';
+import { GlobalStyle } from './components';
+
+const Container = styled.div`
+  // Chrome extension are allowed to be 800px wide and 600px high
+  width: 800px;
+  height: 600px;
+`
 
 function IndexPopup() {
-  const [data, setData] = useState("")
-  console.log('does this log only in the extension, right');
-
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
-      <h2>
-        Welcome to your
-        <a href="https://www.plasmo.com" target="_blank">
-          {" "}
-          Plasmo
-        </a>{" "}
-        Extension!
-      </h2>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <a href="https://docs.plasmo.com" target="_blank">
-        View Docs
-      </a>
-    </div>
-  )
+    <Container>
+      <GlobalStyle />
+      The start of a beautiful extension.
+    </Container>
+  );
 }
 
 export default IndexPopup
