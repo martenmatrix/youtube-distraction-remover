@@ -2,6 +2,7 @@ import { useState } from "react"
 
 function IndexPopup() {
   const [data, setData] = useState("")
+  console.log('does this log only in the extension, right');
 
   return (
     <div
