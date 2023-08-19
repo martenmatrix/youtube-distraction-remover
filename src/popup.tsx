@@ -3,7 +3,7 @@ import { GlobalStyle } from './components';
 
 const Container = styled.div`
   // Chrome extension are allowed to be 800px wide and 600px high
-  width: 800px;
+  width: 400px;
   height: 600px;
 `
 
