@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './components';
+import { defaultTheme } from './colorThemes';
 
 const Container = styled.div`
   // Chrome extension are allowed to be 800px wide and 600px high
@@ -10,8 +11,10 @@ const Container = styled.div`
 function IndexPopup() {
   return (
     <Container>
-      <GlobalStyle />
-      The start of a beautiful extension.
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        The start of a beautiful extension.
+      </ThemeProvider>
     </Container>
   );
 }
