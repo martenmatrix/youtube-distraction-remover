@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './components';
 import { defaultTheme } from './colorThemes';
+import { ToggleButton } from './components';
 
 const Container = styled.div`
   // Chrome extension are allowed to be 800px wide and 600px high
@@ -13,6 +14,7 @@ function IndexPopup() {
     <Container>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
+        <ToggleButton activated={true} onChange={() => {}} />
         The start of a beautiful extension.
       </ThemeProvider>
     </Container>
