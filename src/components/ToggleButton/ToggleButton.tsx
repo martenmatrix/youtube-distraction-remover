@@ -35,7 +35,7 @@ const WhiteCircle = styled.div<{ '$checked': boolean }>`
 
 function ToggleButton({ activated, onChange }: ToggleButtonType): JSX.Element {
   return (
-      <Container role="checkbox" aria-checked={activated} $checked={activated}>
+      <Container onClick={onChange} role="checkbox" aria-checked={activated} $checked={activated}>
         <WhiteCircle $checked={activated} />
       </Container>
   );
