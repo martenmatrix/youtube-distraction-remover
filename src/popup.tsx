@@ -15,7 +15,6 @@ function IndexPopup() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <ToggleButton activated={true} onChange={() => {}} />
-        The start of a beautiful extension.
       </ThemeProvider>
     </Container>
   );
