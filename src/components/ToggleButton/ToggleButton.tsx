@@ -7,23 +7,25 @@ type ToggleButtonType = {
 
 const Container = styled.div`
   width: 4rem;
-  height: 2rem;
+  aspect-ratio: 4 / 2;
   border-radius: 6.25rem;
   background: ${props => props.theme.primary};
   border: 1px solid ${props => props.theme.secondary};
+  
+  display: flex;
+  align-items: center;
   
   position: relative;
 `;
 
 const WhiteCircle = styled.div`
   background: ${props => props.theme.background};
-  height: 50%;
+  height: 80%;
   aspect-ratio: 1/1;
   border-radius: 5rem;
   
   position: absolute;
-  top: 0;
-  bottom: 0;
+  left: 5%;
 `
 
 function ToggleButton({ activated, onChange }: ToggleButtonType): JSX.Element {
