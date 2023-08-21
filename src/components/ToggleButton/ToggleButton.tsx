@@ -5,33 +5,38 @@ type ToggleButtonType = {
   onChange: () => void
 }
 
-const Container = styled.div`
+const Container = styled.div<{ '$checked': boolean }>`
   width: 4rem;
   aspect-ratio: 4 / 2;
   border-radius: 6.25rem;
-  background: ${props => props.theme.primary};
+  background: ${props => props.$checked ? props.theme.accent : props.theme.primary};
   border: 1px solid ${props => props.theme.secondary};
   
   display: flex;
   align-items: center;
   
   position: relative;
+  
+  animation: linear 200ms;
 `;
 
-const WhiteCircle = styled.div`
+const WhiteCircle = styled.div<{ '$checked': boolean }>`
   background: ${props => props.theme.background};
   height: 80%;
   aspect-ratio: 1/1;
   border-radius: 5rem;
   
   position: absolute;
-  left: 5%;
+  left: ${ props => props.$checked ? 'auto' : '5%' };
+  right: ${ props => props.$checked ? '5%' : 'auto' };
+  
+  animation: linear 200ms;
 `
 
 function ToggleButton({ activated, onChange }: ToggleButtonType): JSX.Element {
   return (
-      <Container role="checkbox" aria-checked={activated}>
-        <WhiteCircle />
+      <Container role="checkbox" aria-checked={activated} $checked={activated}>
+        <WhiteCircle $checked={activated} />
       </Container>
   );
 }
