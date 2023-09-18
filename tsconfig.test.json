@@ -1,0 +1,17 @@
+{
+  "esModuleInterop": true,
+  "include": [
+    ".plasmo/index.d.ts",
+    "./**/*.ts",
+    "./**/*.tsx"
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "paths": {
+      "~*": [
+        "./src/*"
+      ]
+    },
+    "baseUrl": "."
+  },
+}
