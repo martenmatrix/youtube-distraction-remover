@@ -14,7 +14,7 @@ function IndexPopup() {
     <Container>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
-        <ToggleButton activated={true} onChange={() => {}} />
+        <ToggleButton activated={false} onChange={() => {}} />
       </ThemeProvider>
     </Container>
   );
