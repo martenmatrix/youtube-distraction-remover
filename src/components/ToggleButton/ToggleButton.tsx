@@ -6,7 +6,7 @@ type ToggleButtonType = {
 }
 
 const Container = styled.div<{ '$checked': boolean }>`
-  width: 4rem;
+  width: 100%;
   aspect-ratio: 4 / 2;
   border-radius: 6.25rem;
   background: ${props => props.$checked ? props.theme.accent : props.theme.primary};
