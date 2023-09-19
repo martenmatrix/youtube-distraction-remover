@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 type ToggleButtonType = {
   activated: boolean,
-  onChange: () => void
+  onChange: () => void,
+  className?: string
 }
 
 const Container = styled.div<{ '$checked': boolean }>`
@@ -33,9 +34,9 @@ const WhiteCircle = styled.div<{ '$checked': boolean }>`
   animation: linear 200ms;
 `
 
-function ToggleButton({ activated, onChange }: ToggleButtonType): JSX.Element {
+function ToggleButton({ activated, onChange, className }: ToggleButtonType): JSX.Element {
   return (
-      <Container onClick={onChange} role="checkbox" aria-checked={activated} $checked={activated}>
+      <Container onClick={onChange} role="checkbox" aria-checked={activated} $checked={activated} className={className}>
         <WhiteCircle $checked={activated} />
       </Container>
   );
