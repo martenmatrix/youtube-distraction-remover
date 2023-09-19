@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Ubuntu';
+    src: url('../../fonts/Ubuntu-Regular.ttf') format('ttf');
+  }
+  
   /*
     Josh's Custom CSS Reset
     https://www.joshwcomeau.com/css/custom-css-reset/
@@ -10,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
   * {
     margin: 0;
+    font-family: 'Ubuntu', sans-serif;
   }
   body {
     line-height: 1.5;
