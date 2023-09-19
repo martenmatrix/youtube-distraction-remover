@@ -7,4 +7,5 @@ export default {
       tsconfig: 'tsconfig.test.json',
     }]
   },
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts']
 };

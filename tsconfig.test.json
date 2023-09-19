@@ -3,7 +3,8 @@
   "include": [
     ".plasmo/index.d.ts",
     "./**/*.ts",
-    "./**/*.tsx"
+    "./**/*.tsx",
+    "./jest-setup.ts"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",
