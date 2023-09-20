@@ -8,7 +8,7 @@ type ToggleButtonType = {
 
 const Container = styled.div<{ '$checked': boolean }>`
   width: 100%;
-  aspect-ratio: 4 / 2;
+  aspect-ratio: 2 / 1;
   border-radius: 6.25rem;
   background: ${props => props.$checked ? props.theme.accent : props.theme.primary};
   border: 1px solid ${props => props.theme.secondary};
@@ -24,7 +24,7 @@ const Container = styled.div<{ '$checked': boolean }>`
 const WhiteCircle = styled.div<{ '$checked': boolean }>`
   background: ${props => props.theme.background};
   height: 80%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border-radius: 5rem;
   
   position: absolute;
