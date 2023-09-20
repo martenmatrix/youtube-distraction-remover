@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@plasmohq/storage':
+    specifier: ^1.8.0
+    version: 1.8.0(react@18.2.0)
   jest:
     specifier: ^29.6.2
     version: 29.6.2(@types/node@20.5.0)(ts-node@10.9.1)
@@ -3492,6 +3495,18 @@ packages:
       - velocityjs
       - walrus
       - whiskers
+    dev: false
+
+  /@plasmohq/storage@1.8.0(react@18.2.0):
+    resolution: {integrity: sha512-8VEVKq2takNaR6SBpRaS2KdLMwsoH91eekap1QA2M4B2CcyprSbsEMuK6HogfcD5gRBzHJAhHqwBGL9PdUJm7w==}
+    peerDependencies:
+      react: ^16.8.6 || ^17 || ^18
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      pify: 6.1.0
+      react: 18.2.0
     dev: false
 
   /@pnpm/config.env-replace@1.1.0:
@@ -7431,6 +7446,11 @@ packages:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
     requiresBuild: true
+    dev: false
+
+  /pify@6.1.0:
+    resolution: {integrity: sha512-KocF8ve28eFjjuBKKGvzOBGzG8ew2OqOOSxTTZhirkzH7h3BI1vyzqlR0qbfcDBve1Yzo3FVlWUAtCRrbVN8Fw==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /pirates@4.0.6:
