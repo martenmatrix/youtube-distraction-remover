@@ -1,5 +1,4 @@
 {
-  "esModuleInterop": true,
   "include": [
     ".plasmo/index.d.ts",
     "./**/*.ts",
@@ -13,6 +12,7 @@
         "./src/*"
       ]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "esModuleInterop": true
   },
 }
