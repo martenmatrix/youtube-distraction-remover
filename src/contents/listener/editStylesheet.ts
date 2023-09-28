@@ -1,4 +1,4 @@
-import { addCSS, removeCSS } from '~contents/css-editor';
+import { addCSS, removeCSS } from '../css-editor';
 
 function editStylesheet(active, css): void {
   if (active) {
