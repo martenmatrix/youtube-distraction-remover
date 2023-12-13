@@ -5,5 +5,9 @@ export default {
     background: '#242526',
     active: '#00C04B',
     disabled: '#FF595E'
+  },
+
+  border: {
+    main: '5px',
   }
 }
