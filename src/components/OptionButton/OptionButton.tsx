@@ -32,8 +32,30 @@ const StatusDisabled = styled(Status).attrs(() => ({ children: "Disabled" }))`
   background: ${props => props.theme.color.disabled + 50}; // opacity is 0.5 => hex + 50
 `
 
+const OptionButtonContainer = styled.div`
+  display: flex;
+  width: 340px;
+  height: 50px;
+  padding: 0 18px;
+  
+  justify-content: space-between;
+  align-items: center;
+  border-radius: ${props => props.theme.border.main};
+  
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: ${props => props.theme.color.secondary};
+  
+  background: ${props => props.theme.color.primary};
+  box-shadow: 0 0 10px ${props => props.theme.color.background} inset;
+`
+
 function OptionButton({ text, active, className }: OptionButtonProps): React.ReactNode {
-  return (<StatusDisabled />)
+  return <OptionButtonContainer>
+    <div>Hide Feed</div>
+    <StatusActive />
+  </OptionButtonContainer>
 }
 
 export default OptionButton;
