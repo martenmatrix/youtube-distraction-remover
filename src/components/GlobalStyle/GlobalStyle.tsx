@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
     src: url('../../fonts/Ubuntu-Regular.ttf') format('ttf');
   }
   
+  @font-face {
+    font-family: 'Work Sans';
+    src: url('../../fonts/WorkSans.ttf') format('ttf');
+  }
+  
   /*
     Josh's Custom CSS Reset
     https://www.joshwcomeau.com/css/custom-css-reset/
