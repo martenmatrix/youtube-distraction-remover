@@ -55,7 +55,7 @@ const OptionButtonContainer = styled.div`
 function OptionButton({ text, active, className }: OptionButtonProps): React.ReactNode {
   return <OptionButtonContainer className={className} role="switch" aria-checked={active}>
     <div>{text}</div>
-    {active ? <StatusActive /> : <StatusDisabled />}
+    {active ? <StatusActive aria-hidden /> : <StatusDisabled aria-hidden />}
   </OptionButtonContainer>
 }
 
