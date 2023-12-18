@@ -4,6 +4,7 @@ import styled from 'styled-components';
 type OptionButtonProps = {
   text: string;
   active: boolean;
+  onClick?: () => {};
   className?: string;
 };
 
@@ -57,10 +58,12 @@ const OptionButtonContainer = styled.div`
 function OptionButton({
   text,
   active,
+  onClick,
   className,
 }: OptionButtonProps): React.ReactNode {
   return (
     <OptionButtonContainer
+      onClick={onClick}
       className={className}
       role="switch"
       aria-checked={active}
