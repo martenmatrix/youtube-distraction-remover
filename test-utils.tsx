@@ -8,7 +8,7 @@ const AllTheProviders = ({ children }) => {
   return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
 };
 
-const customRender = (ui, options) =>
+const customRender = (ui, ...options) =>
   render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
