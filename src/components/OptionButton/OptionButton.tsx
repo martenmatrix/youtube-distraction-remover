@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 type OptionButtonProps = {
   text: string,
@@ -52,9 +53,9 @@ const OptionButtonContainer = styled.div`
 `
 
 function OptionButton({ text, active, className }: OptionButtonProps): React.ReactNode {
-  return <OptionButtonContainer>
-    <div>Hide Feed</div>
-    <StatusActive />
+  return <OptionButtonContainer className={className}>
+    <div>{text}</div>
+    {active ? <StatusActive /> : <StatusDisabled />}
   </OptionButtonContainer>
 }
 
