@@ -1,3 +1,5 @@
+import userEvent from '@testing-library/user-event';
+
 import { render, screen } from '../../../test-utils';
 import OptionButton from './OptionButton';
 
@@ -15,4 +17,15 @@ test('displays states correct', () => {
   rerender(<OptionButton text="Option 1" active={false} />);
   const disabled = screen.getByText(/disabled/i);
   expect(disabled).toBeInTheDocument();
+});
+
+test('onClick is called, when clicking the element', async () => {
+  const mockFunc = jest.fn();
+  render(<OptionButton text="Option 1" active={false} onClick={mockFunc} />);
+
+  const option = screen.getByRole('switch');
+  const user = userEvent.setup();
+  await user.click(option);
+
+  expect(mockFunc).toHaveBeenCalledTimes(1);
 });
