@@ -1,9 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import ToggleButton from './ToggleButton';
 
 test('represents active state passed as props', () => {
-  const { rerender } = render(<ToggleButton activated={true} onChange={() => {}} />);
+  const { rerender } = render(
+    <ToggleButton activated={true} onChange={() => {}} />,
+  );
   const toggleButtonActive = screen.getByRole('checkbox');
   expect(toggleButtonActive).toHaveAttribute('aria-checked', 'true');
 
