@@ -36,12 +36,6 @@ const StatusDisabled = styled(Status).attrs(() => ({ children: 'Disabled' }))`
     props.theme.color.disabled + 50}; // opacity is 0.5 => hex + 50
 `;
 
-const borderFadeAnimation = keyframes`
-  to {
-    border-color: ${(props) => props.theme.main.color.primary};
-  }
-`;
-
 const OptionButtonContainer = styled.div`
   display: flex;
   cursor: pointer;
@@ -69,8 +63,9 @@ const OptionButtonContainer = styled.div`
   background: ${(props) => props.theme.color.primary};
   box-shadow: 0 0 10px ${(props) => props.theme.color.background} inset;
 
-  &hover {
-    animation: ${borderFadeAnimation} 100ms;
+  transition: border-color 100ms;
+  &:hover {
+    border-color: ${(props) => props.theme.color.secondary};
   }
 `;
 
