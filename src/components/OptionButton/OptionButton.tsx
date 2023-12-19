@@ -43,6 +43,13 @@ const OptionButtonContainer = styled.div`
   height: 50px;
   padding: 0 18px;
 
+  /*
+  user-select is not an inherited property, though the initial auto value makes it behave like it is inherited most of 
+  the time. WebKit/Chromium-based browsers do implement the property as inherited, which violates the behavior described
+  in the spec, and this will bring some issues. See https://developer.mozilla.org/en-US/docs/Web/CSS/user-select.
+   */
+  user-select: none;
+
   justify-content: space-between;
   align-items: center;
   border-radius: ${(props) => props.theme.border.main};
