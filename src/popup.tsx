@@ -7,16 +7,18 @@ const Container = styled.div`
   // Chrome extension are allowed to be 800px wide and 600px high
   width: 400px;
   height: 600px;
+  background: ${(props) => props.theme.color.background};
+  border: none;
 `;
 
 function IndexPopup() {
   return (
-    <Container>
-      <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <Container>
         <GlobalStyle />
         <OptionButton text="Hide Feed" active={true} />
-      </ThemeProvider>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 }
 
