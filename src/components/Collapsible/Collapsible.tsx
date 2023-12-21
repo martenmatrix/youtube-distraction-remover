@@ -25,3 +25,5 @@ function Collapsible({ name, children, className }): React.ReactNode {
     </div>
   );
 }
+
+export default Collapsible;
