@@ -11,7 +11,11 @@ const CollapsibleButton = styled.div``;
 
 const CollapsibleContent = styled.div``;
 
-function Collapsible({ name, children, className }): React.ReactNode {
+function Collapsible({
+  name,
+  children,
+  className,
+}: Collapsible): React.ReactNode {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
