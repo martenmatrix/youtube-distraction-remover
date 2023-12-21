@@ -53,7 +53,7 @@ const CollapsibleButton = styled.div`
 
   border: 1px solid ${(props) => props.theme.color.secondary};
   border-radius: ${(props) => props.theme.border.main};
-  box-shadow: 0 0 5px ${(props) => props.theme.color.primary};
+  box-shadow: 0 0 5px ${(props) => props.theme.color.secondary};
 
   /*
   user-select is not an inherited property, though the initial auto value makes it behave like it is inherited most of 
