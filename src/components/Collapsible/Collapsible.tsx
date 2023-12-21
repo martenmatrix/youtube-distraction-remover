@@ -29,7 +29,10 @@ const ArrowIcon = ({ className }: { className?: string }) => {
   );
 };
 
-const StyledArrowIcon = styled(ArrowIcon)``;
+const StyledArrowIcon = styled(ArrowIcon)<{ $rotateBy?: string }>`
+  transition: transform 200ms;
+  transform: rotate(${(props) => props.$rotateBy});
+`;
 
 const CollapsibleButton = styled.div`
   display: flex;
@@ -69,11 +72,18 @@ function Collapsible({
 }: Collapsible): React.ReactNode {
   const [expanded, setExpanded] = useState<boolean>(false);
 
+  function onClickHandler(): void {
+    setExpanded((oldState) => !oldState);
+  }
+
   return (
     <div className={className}>
-      <CollapsibleButton aria-controls={name} aria-expanded={expanded}>
+      <CollapsibleButton
+        onClick={onClickHandler}
+        aria-controls={name}
+        aria-expanded={expanded}>
         {name}
-        <StyledArrowIcon />
+        <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
       </CollapsibleButton>
       <CollapsibleContent id={name} aria-hidden={!expanded}>
         {children}
