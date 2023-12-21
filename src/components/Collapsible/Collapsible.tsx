@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Collapsible = {
   name: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 };
 
