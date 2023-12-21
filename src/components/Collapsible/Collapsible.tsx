@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 type Collapsible = {
@@ -63,18 +63,38 @@ const CollapsibleButton = styled.div`
   user-select: none;
 `;
 
-const CollapsibleContent = styled.div``;
+const CollapsibleContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  max-height: 0;
+  overflow: hidden;
+`;
 
 function Collapsible({
   name,
   children,
   className,
 }: Collapsible): React.ReactNode {
+  const collapsibleContentRef = useRef(null);
   const [expanded, setExpanded] = useState<boolean>(false);
 
   function onClickHandler(): void {
     setExpanded((oldState) => !oldState);
   }
+
+  useEffect(() => {
+    if (!collapsibleContentRef.current) return;
+
+    if (expanded) {
+      const neededHeight = collapsibleContentRef.current.scrollHeight;
+      collapsibleContentRef.current.style.maxHeight = neededHeight + 'px';
+    } else {
+      collapsibleContentRef.current.style.maxHeight = 0;
+    }
+  }, [expanded]);
 
   return (
     <div className={className}>
@@ -85,7 +105,10 @@ function Collapsible({
         {name}
         <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
       </CollapsibleButton>
-      <CollapsibleContent id={name} aria-hidden={!expanded}>
+      <CollapsibleContent
+        id={name}
+        aria-hidden={!expanded}
+        ref={collapsibleContentRef}>
         {children}
       </CollapsibleContent>
     </div>
