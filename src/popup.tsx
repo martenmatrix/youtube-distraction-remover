@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 
 import { defaultTheme } from './colorThemes';
-import { GlobalStyle, OptionButton } from './components';
+import { Collapsible, GlobalStyle, OptionButton } from './components';
 
 const Container = styled.div`
   // Chrome extension are allowed to be 800px wide and 600px high
@@ -16,7 +16,10 @@ function IndexPopup() {
     <ThemeProvider theme={defaultTheme}>
       <Container>
         <GlobalStyle />
-        <OptionButton text="Hide Feed" active={true} />
+        <Collapsible name="General">
+          <OptionButton text="Hide Feed" active={true} />
+          <OptionButton text="Hide Homepage" active={true} />
+        </Collapsible>
       </Container>
     </ThemeProvider>
   );
