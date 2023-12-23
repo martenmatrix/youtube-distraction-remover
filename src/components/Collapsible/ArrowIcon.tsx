@@ -23,9 +23,4 @@ const ArrowIcon = ({ className }: { className?: string }) => {
   );
 };
 
-const StyledArrowIcon = styled(ArrowIcon)<{ $rotateBy?: string }>`
-  transition: transform 200ms;
-  transform: rotate(${(props) => props.$rotateBy});
-`;
-
-export default StyledArrowIcon;
+export default ArrowIcon;

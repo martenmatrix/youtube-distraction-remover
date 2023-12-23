@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import StyledArrowIcon from './ArrowIcon';
+import ArrowIcon from './ArrowIcon';
+
+const StyledArrowIcon = styled(ArrowIcon)<{ $rotateBy?: string }>`
+  transition: transform 200ms;
+  transform: rotate(${(props) => props.$rotateBy});
+`;
 
 type Collapsible = {
   name: string;
