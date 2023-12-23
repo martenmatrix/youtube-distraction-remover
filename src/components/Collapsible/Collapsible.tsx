@@ -46,6 +46,7 @@ const CollapsibleContent = styled.div`
 
   max-height: 0;
   overflow: hidden;
+  transition: max-height 200ms;
 `;
 
 function Collapsible({
