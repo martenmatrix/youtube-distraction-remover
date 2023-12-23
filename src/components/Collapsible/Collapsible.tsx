@@ -17,7 +17,7 @@ type Collapsible = {
 const CollapsibleButton = styled.div`
   display: grid;
   grid-template:
-    'title title'
+    'title icon'
     'content content';
 
   color: ${(props) => props.theme.color.secondary};
