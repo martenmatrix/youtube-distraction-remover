@@ -10,9 +10,10 @@ type Collapsible = {
 };
 
 const CollapsibleButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template:
+    'title title'
+    'content content';
 
   color: ${(props) => props.theme.color.secondary};
   background: ${(props) => props.theme.color.primary};
@@ -23,7 +24,7 @@ const CollapsibleButton = styled.div`
   font-weight: 400;
 
   width: 386px;
-  height: 67px;
+  min-height: 67px;
   padding: 0 10px;
 
   border: 1px solid ${(props) => props.theme.color.secondary};
@@ -80,13 +81,13 @@ function Collapsible({
         aria-expanded={expanded}>
         {name}
         <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
+        <CollapsibleContent
+          id={name}
+          aria-hidden={!expanded}
+          ref={collapsibleContentRef}>
+          {children}
+        </CollapsibleContent>
       </CollapsibleButton>
-      <CollapsibleContent
-        id={name}
-        aria-hidden={!expanded}
-        ref={collapsibleContentRef}>
-        {children}
-      </CollapsibleContent>
     </div>
   );
 }
