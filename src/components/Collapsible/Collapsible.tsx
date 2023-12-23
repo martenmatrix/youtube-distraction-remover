@@ -7,6 +7,8 @@ const StyledArrowIcon = styled(ArrowIcon)<{ $rotateBy?: string }>`
   transition: transform 200ms;
   transform: rotate(${(props) => props.$rotateBy});
   grid-area: icon;
+  align-self: center;
+  justify-self: end;
 `;
 
 type Collapsible = {
@@ -61,6 +63,7 @@ const CollapsibleContent = styled.div`
 
 const Title = styled.div`
   grid-area: title;
+  align-self: center;
 `;
 
 function Collapsible({
