@@ -9,6 +9,10 @@ const Container = styled.div`
   height: 600px;
   background: ${(props) => props.theme.color.background};
   border: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 function IndexPopup() {
