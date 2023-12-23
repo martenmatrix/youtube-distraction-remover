@@ -6,6 +6,7 @@ import ArrowIcon from './ArrowIcon';
 const StyledArrowIcon = styled(ArrowIcon)<{ $rotateBy?: string }>`
   transition: transform 200ms;
   transform: rotate(${(props) => props.$rotateBy});
+  grid-area: icon;
 `;
 
 type Collapsible = {
@@ -45,6 +46,8 @@ const CollapsibleButton = styled.div`
 `;
 
 const CollapsibleContent = styled.div`
+  grid-area: content;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,6 +56,10 @@ const CollapsibleContent = styled.div`
   max-height: 0;
   overflow: hidden;
   transition: max-height 200ms;
+`;
+
+const Title = styled.div`
+  grid-area: title;
 `;
 
 function Collapsible({
@@ -84,7 +91,7 @@ function Collapsible({
         onClick={onClickHandler}
         aria-controls={name}
         aria-expanded={expanded}>
-        {name}
+        <Title>{name}</Title>
         <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
         <CollapsibleContent
           id={name}
