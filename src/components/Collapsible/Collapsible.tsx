@@ -60,6 +60,11 @@ const CollapsibleContent = styled.div`
   transition: max-height 200ms;
 `;
 
+const ChildrenMarginWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
 const Title = styled.div`
   grid-area: title;
   align-self: center;
@@ -100,7 +105,7 @@ function Collapsible({
         id={name}
         aria-hidden={!expanded}
         ref={collapsibleContentRef}>
-        {children}
+        {<ChildrenMarginWrapper>{children}</ChildrenMarginWrapper>}
       </CollapsibleContent>
     </CollapsibleContainer>
   );

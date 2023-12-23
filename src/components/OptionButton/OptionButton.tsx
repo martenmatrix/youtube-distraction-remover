@@ -40,7 +40,6 @@ const OptionButtonContainer = styled.div`
   display: flex;
   cursor: pointer;
   width: 100%;
-  margin: 10px 0;
   padding: 9px 18px;
   border: 1px solid transparent;
 
