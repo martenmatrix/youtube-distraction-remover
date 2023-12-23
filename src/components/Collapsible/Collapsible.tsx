@@ -90,6 +90,7 @@ function Collapsible({
 
   return (
     <CollapsibleContainer
+      className={className}
       onClick={onClickHandler}
       aria-controls={name}
       aria-expanded={expanded}>
