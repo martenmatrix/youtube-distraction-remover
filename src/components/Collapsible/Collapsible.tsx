@@ -15,7 +15,7 @@ type Collapsible = {
   className?: string;
 };
 
-const CollapsibleButton = styled.div`
+const CollapsibleContainer = styled.div`
   display: grid;
   grid-template:
     'title icon'
@@ -86,7 +86,7 @@ function Collapsible({
   }, [expanded]);
 
   return (
-    <CollapsibleButton
+    <CollapsibleContainer
       onClick={onClickHandler}
       aria-controls={name}
       aria-expanded={expanded}>
@@ -98,7 +98,7 @@ function Collapsible({
         ref={collapsibleContentRef}>
         {children}
       </CollapsibleContent>
-    </CollapsibleButton>
+    </CollapsibleContainer>
   );
 }
 
