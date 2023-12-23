@@ -39,7 +39,7 @@ const StatusDisabled = styled(Status).attrs(() => ({ children: 'Disabled' }))`
 const OptionButtonContainer = styled.div`
   display: flex;
   cursor: pointer;
-  width: 340px;
+  width: 100%;
   padding: 9px 18px;
   border: 1px solid transparent;
 
