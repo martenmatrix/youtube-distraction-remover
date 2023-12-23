@@ -54,7 +54,6 @@ const CollapsibleContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
 
   max-height: 0;
   overflow: hidden;
