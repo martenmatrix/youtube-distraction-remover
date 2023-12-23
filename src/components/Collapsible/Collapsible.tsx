@@ -20,6 +20,7 @@ const CollapsibleContainer = styled.div`
   grid-template:
     'title icon'
     'content content';
+  grid-template-rows: 67px auto;
 
   color: ${(props) => props.theme.color.secondary};
   background: ${(props) => props.theme.color.primary};
