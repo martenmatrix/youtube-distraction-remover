@@ -86,21 +86,19 @@ function Collapsible({
   }, [expanded]);
 
   return (
-    <div className={className}>
-      <CollapsibleButton
-        onClick={onClickHandler}
-        aria-controls={name}
-        aria-expanded={expanded}>
-        <Title>{name}</Title>
-        <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
-        <CollapsibleContent
-          id={name}
-          aria-hidden={!expanded}
-          ref={collapsibleContentRef}>
-          {children}
-        </CollapsibleContent>
-      </CollapsibleButton>
-    </div>
+    <CollapsibleButton
+      onClick={onClickHandler}
+      aria-controls={name}
+      aria-expanded={expanded}>
+      <Title>{name}</Title>
+      <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
+      <CollapsibleContent
+        id={name}
+        aria-hidden={!expanded}
+        ref={collapsibleContentRef}>
+        {children}
+      </CollapsibleContent>
+    </CollapsibleButton>
   );
 }
 
