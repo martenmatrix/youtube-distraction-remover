@@ -104,7 +104,8 @@ function Collapsible({
       <CollapsibleContent
         id={name}
         aria-hidden={!expanded}
-        ref={collapsibleContentRef}>
+        ref={collapsibleContentRef}
+        onClick={(e) => e.stopPropagation()}>
         {<ChildrenMarginWrapper>{children}</ChildrenMarginWrapper>}
       </CollapsibleContent>
     </CollapsibleContainer>
