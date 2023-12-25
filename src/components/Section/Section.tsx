@@ -5,8 +5,8 @@ import { useStorage } from '@plasmohq/storage/hook';
 import { Collapsible, OptionButton } from '../.';
 
 type StyleSetting = {
-  storageId: string; // The id, which is used to access the specific setting in the Storage API.
   name: string; // A name for the setting, which will be displayed.
+  storageId: string; // The id, which is used to access the specific setting in the Storage API.
 };
 
 interface StyleSettingState extends StyleSetting {
