@@ -32,10 +32,11 @@ describe('GeneralSection', () => {
       { storageId: 'setting2', name: 'Setting 2' },
     ];
 
-    render(<Section settings={settings} />);
+    render(<Section name="named section" settings={settings} />);
 
     expect(screen.getByText('Setting 1')).toBeInTheDocument();
     expect(screen.getByText('Setting 2')).toBeInTheDocument();
+    expect(screen.getByText('named section')).toBeInTheDocument();
   });
 
   test('should toggle the state of a setting when clicked', async () => {
