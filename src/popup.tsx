@@ -2,6 +2,7 @@ import styled, { ThemeProvider } from 'styled-components';
 
 import { defaultTheme } from './colorThemes';
 import { GlobalStyle, Section } from './components';
+import styleSettings from './styleSettings';
 
 const Container = styled.div`
   // Chrome extension are allowed to be 800px wide and 600px high
@@ -17,11 +18,24 @@ const Container = styled.div`
 `;
 
 function IndexPopup() {
+  const sections = Array.from(
+    new Set(...styleSettings.map((setting) => setting.section)),
+  );
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container>
         <GlobalStyle />
-        <Section settings={[{ name: 'Hide Feed', storageId: 'hideFeed' }]} />
+        {sections.map((section) => {
+          return (
+            <Section
+              name={section}
+              settings={styleSettings.filter((setting) =>
+                setting.section.includes(section),
+              )}
+            />
+          );
+        })}
       </Container>
     </ThemeProvider>
   );
