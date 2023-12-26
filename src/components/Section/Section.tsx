@@ -10,10 +10,11 @@ interface StyleSettingState extends StyleSetting {
 }
 
 type GeneralSectionType = {
+  name: string;
   settings: StyleSetting[];
 };
 
-function Section({ settings }: GeneralSectionType) {
+function Section({ name, settings }: GeneralSectionType) {
   const styleSettingStates: StyleSettingState[] = [];
 
   settings.forEach((setting) => {
@@ -28,7 +29,7 @@ function Section({ settings }: GeneralSectionType) {
   });
 
   return (
-    <Collapsible name="General">
+    <Collapsible name={name}>
       {styleSettingStates.map((styleSettingState) => (
         <OptionButton
           key={styleSettingState.storageId}
