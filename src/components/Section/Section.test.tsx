@@ -28,8 +28,8 @@ describe('GeneralSection', () => {
 
   test('should render options based on provided settings', () => {
     const settings = [
-      { storageId: 'setting1', name: 'Setting 1' },
-      { storageId: 'setting2', name: 'Setting 2' },
+      { storageId: 'setting1', name: 'Setting 1', css: '.class {}' },
+      { storageId: 'setting2', name: 'Setting 2', css: '.class {}' },
     ];
 
     render(<Section name="named section" settings={settings} />);
@@ -40,10 +40,12 @@ describe('GeneralSection', () => {
   });
 
   test('should toggle the state of a setting when clicked', async () => {
-    const settings = [{ storageId: 'setting1', name: 'Setting 1' }];
+    const settings = [
+      { storageId: 'setting1', name: 'Setting 1', css: '.class {}' },
+    ];
     const user = userEvent.setup();
 
-    render(<Section settings={settings} />);
+    render(<Section name="example" settings={settings} />);
 
     const button = screen.getByText('Setting 1');
     await user.click(button);
