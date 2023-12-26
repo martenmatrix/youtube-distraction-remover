@@ -1,3 +1,3 @@
 import homepage from './homepage';
 
-export { homepage };
+export default [...homepage];
