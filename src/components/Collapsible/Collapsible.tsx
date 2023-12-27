@@ -100,7 +100,10 @@ function Collapsible({
       aria-controls={name}
       aria-expanded={expanded}>
       <Title>{name}</Title>
-      <StyledArrowIcon $rotateBy={expanded ? '90deg' : '0'} />
+      <StyledArrowIcon
+        aria-hidden="true"
+        $rotateBy={expanded ? '90deg' : '0'}
+      />
       <CollapsibleContent
         id={name}
         aria-hidden={!expanded}
