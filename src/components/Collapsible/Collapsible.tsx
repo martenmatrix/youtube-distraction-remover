@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import ArrowIcon from './ArrowIcon';
 
+const collapsedHeight = '67px';
+
 const StyledArrowIcon = styled(ArrowIcon)<{ $rotateBy?: string }>`
   transition: transform 200ms;
   transform: rotate(${(props) => props.$rotateBy});
@@ -22,7 +24,7 @@ const CollapsibleContainer = styled.div`
   grid-template:
     'title icon'
     'content content';
-  grid-template-rows: 67px auto;
+  grid-template-rows: ${collapsedHeight} auto;
 
   color: ${(props) => props.theme.color.secondary};
   background: ${(props) => props.theme.color.primary};
@@ -32,8 +34,9 @@ const CollapsibleContainer = styled.div`
   font-size: 30px;
   font-weight: 400;
 
+  position: relative;
   width: 386px;
-  min-height: 67px;
+  min-height: ${collapsedHeight};
   padding: 0 10px;
 
   border: 1px solid ${(props) => props.theme.color.secondary};
@@ -46,6 +49,18 @@ const CollapsibleContainer = styled.div`
   in the spec, and this will bring some issues. See https://developer.mozilla.org/en-US/docs/Web/CSS/user-select.
   */
   user-select: none;
+`;
+
+const CollapsibleControlButton = styled.button`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ${collapsedHeight};
+
+  background: transparent;
+  color: transparent;
+  border: none;
 `;
 
 const CollapsibleContent = styled.div`
@@ -94,11 +109,13 @@ function Collapsible({
   }, [expanded]);
 
   return (
-    <CollapsibleContainer
-      className={className}
-      onClick={onClickHandler}
-      aria-controls={name}
-      aria-expanded={expanded}>
+    <CollapsibleContainer className={className}>
+      <CollapsibleControlButton
+        onClick={onClickHandler}
+        aria-controls={name}
+        aria-expanded={expanded}
+        name={name}
+      />
       <Title>{name}</Title>
       <StyledArrowIcon
         aria-hidden="true"
