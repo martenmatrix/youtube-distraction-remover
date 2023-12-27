@@ -61,6 +61,8 @@ const CollapsibleControlButton = styled.button`
   background: transparent;
   color: transparent;
   border: none;
+
+  cursor: pointer;
 `;
 
 const CollapsibleContent = styled.div`
