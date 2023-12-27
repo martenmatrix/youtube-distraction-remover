@@ -114,7 +114,7 @@ function Collapsible({
         onClick={onClickHandler}
         aria-controls={name}
         aria-expanded={expanded}
-        name={name}
+        aria-label={name}
       />
       <Title>{name}</Title>
       <StyledArrowIcon
