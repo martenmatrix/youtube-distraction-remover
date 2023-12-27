@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 
 import { defaultTheme } from './colorThemes';
-import { GlobalStyle, Section } from './components';
+import { GlobalStyle, StyleSettings } from './components';
 import styleSettings from './styleSettings';
 
 const Container = styled.div`
@@ -18,24 +18,11 @@ const Container = styled.div`
 `;
 
 function IndexPopup() {
-  const sections = Array.from(
-    new Set(...styleSettings.map((setting) => setting.section)),
-  );
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container>
         <GlobalStyle />
-        {sections.map((section) => {
-          return (
-            <Section
-              name={section}
-              settings={styleSettings.filter((setting) =>
-                setting.section.includes(section),
-              )}
-            />
-          );
-        })}
+        <StyleSettings settings={styleSettings} />
       </Container>
     </ThemeProvider>
   );
