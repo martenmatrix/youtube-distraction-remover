@@ -11,8 +11,6 @@ describe('Collapsible', () => {
       </Collapsible>,
     );
 
-    const user = userEvent.setup();
-
     const button = screen.getByRole('button', { name: /A Collapsible/i });
     expect(button).toBeInTheDocument();
     expect(screen.getByText('Children')).toBeInTheDocument();
