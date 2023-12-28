@@ -16,6 +16,7 @@ function StyleSettings({ settings }: StyleSettingsType): React.ReactNode {
       {sections.map((section) => {
         return (
           <Section
+            key={section}
             name={section}
             settings={settings.filter((setting) =>
               setting.section.includes(section),
