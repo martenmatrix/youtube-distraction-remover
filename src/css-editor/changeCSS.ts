@@ -1,4 +1,5 @@
 // creates and inserts sheets into document
+// IMPORTANT: ensure this is called in the content script, otherwise it will just manipulate the extensions css
 const sheet = new CSSStyleSheet();
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
 
