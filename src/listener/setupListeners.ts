@@ -1,5 +1,3 @@
-import { Storage } from '@plasmohq/storage';
-
 import styleSettings from '../styleSettings';
 import editStylesheet from './editStylesheet';
 
