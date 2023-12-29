@@ -1,17 +1,15 @@
 import type { PlasmoCSConfig } from 'plasmo';
 
+import { Storage } from '@plasmohq/storage';
+
+import setupListeners from '~listener';
+
 export const config: PlasmoCSConfig = {
-  matches: ['http://www.youtube.com/*, https://www.youtube.com/*'],
+  matches: ['*://www.youtube.com/*'],
+  run_at: 'document_start',
+  world: 'MAIN',
 };
 
-const hideFeed = document.createElement('style');
-hideFeed.textContent =
-  '#contents { visibility: hidden; width: 0px; height: 0px; }';
-document.head.appendChild(hideFeed);
-console.log(
-  'You may find that having is not so pleasing a thing as wanting. This is not logical, but it is often true.',
-);
-
-window.addEventListener('load', () => {
-  console.log('extension runs');
-});
+console.warn('YouTube Distraction Remover: Listeners were setup');
+const storage: Storage = new Storage();
+setupListeners(storage);
