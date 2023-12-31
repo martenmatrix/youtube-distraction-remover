@@ -1,6 +1,6 @@
 import { addCSS, removeCSS } from '../css-editor';
 
-function editStylesheet(active, css): void {
+function editStylesheet(active: boolean, css: string): void {
   if (active) {
     addCSS(css);
   } else {
