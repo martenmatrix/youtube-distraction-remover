@@ -6,7 +6,7 @@ import { Collapsible, OptionButton } from '../.';
 
 interface StyleSettingState extends StyleSetting {
   state: boolean;
-  toggleState: () => any;
+  toggleState: () => {};
 }
 
 type GeneralSectionType = {
@@ -18,12 +18,12 @@ function Section({ name, settings }: GeneralSectionType) {
   const styleSettingStates: StyleSettingState[] = [];
 
   settings.forEach((setting) => {
-    const [storage, setStorage] = useStorage<boolean>(setting.storageId, false);
-    const toggleState = () => setStorage((prevState) => !prevState);
+    const [storage, setStorage] = useStorage<boolean>(setting.storageId);
+    const toggleState = setStorage((prevState) => !prevState);
 
     styleSettingStates.push({
       state: storage,
-      toggleState,
+      toggleState: () => toggleState,
       ...setting,
     });
   });

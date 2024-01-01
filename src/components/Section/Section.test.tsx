@@ -7,6 +7,8 @@ import { render, screen } from '../../../test-utils';
 
 import '@testing-library/jest-dom';
 
+import { getByText } from '@testing-library/dom';
+
 import Section from './Section';
 
 const mockSetStorage = jest.fn();
@@ -50,6 +52,19 @@ describe('GeneralSection', () => {
     const button = screen.getByText('Setting 1');
     await user.click(button);
 
+    expect(mockSetStorage).toHaveBeenCalled();
+  });
+
+  test('calls setStorage when clicking element', () => {
+    const settings = [
+      { storageId: 'setting1', name: 'Setting 1', css: '.class {}' },
+      { storageId: 'setting2', name: 'Setting 2', css: '.class {}' },
+    ];
+    const { getByText } = render(
+      <Section name="example" settings={settings} />,
+    );
+    const element = getByText('Setting 1');
+    userEvent.click(element);
     expect(mockSetStorage).toHaveBeenCalled();
   });
 });
