@@ -55,7 +55,7 @@ describe('GeneralSection', () => {
     expect(mockSetStorage).toHaveBeenCalled();
   });
 
-  test('calls setStorage when clicking element', () => {
+  test('calls setStorage when clicking element', async () => {
     const settings = [
       { storageId: 'setting1', name: 'Setting 1', css: '.class {}' },
       { storageId: 'setting2', name: 'Setting 2', css: '.class {}' },
@@ -63,8 +63,11 @@ describe('GeneralSection', () => {
     const { getByText } = render(
       <Section name="example" settings={settings} />,
     );
+    const user = userEvent.setup();
+
     const element = getByText('Setting 1');
-    userEvent.click(element);
+
+    await user.click(element);
     expect(mockSetStorage).toHaveBeenCalled();
   });
 });
