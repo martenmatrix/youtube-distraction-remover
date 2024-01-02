@@ -7,7 +7,7 @@ type StyleSettingsType = {
 };
 
 function StyleSettings({ settings }: StyleSettingsType): React.ReactNode {
-  const sections = Array.from(
+  const sections: string[] = Array.from(
     new Set(...settings.map((setting) => setting.section)),
   );
 
