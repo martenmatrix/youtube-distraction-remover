@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useStorage } from '@plasmohq/storage/hook';
 
@@ -15,18 +15,22 @@ type GeneralSectionType = {
 };
 
 function Section({ name, settings }: GeneralSectionType) {
-  const styleSettingStates: StyleSettingState[] = [];
+  function getStyleSettingWithState(): StyleSettingState[] {
+    return settings.map((setting) => {
+      const [storage, setStorage] = useStorage<boolean>(setting.storageId);
+      const toggleState = () => setStorage((prevState) => !prevState);
 
-  settings.forEach((setting) => {
-    const [storage, setStorage] = useStorage<boolean>(setting.storageId);
-    const toggleState = setStorage((prevState) => !prevState);
-
-    styleSettingStates.push({
-      state: storage,
-      toggleState: () => toggleState,
-      ...setting,
+      return {
+        state: storage,
+        toggleState: toggleState,
+        ...setting,
+      };
     });
-  });
+  }
+
+  const [styleSettingStates] = useState<StyleSettingState[]>([
+    ...getStyleSettingWithState(),
+  ]);
 
   return (
     <Collapsible name={name}>
