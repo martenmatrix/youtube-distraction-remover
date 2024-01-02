@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useStorage } from '@plasmohq/storage/hook';
+
 type OptionButtonProps = {
+  id: string;
   text: string;
-  active: boolean;
-  onClick?: () => {};
   className?: string;
 };
 
@@ -69,14 +70,15 @@ const OptionButtonContainer = styled.div`
 `;
 
 function OptionButton({
+  id,
   text,
-  active,
-  onClick,
   className,
 }: OptionButtonProps): React.ReactNode {
+  const [active, setActive] = useStorage(id, false);
+
   return (
     <OptionButtonContainer
-      onClick={onClick}
+      onClick={() => setActive((prevState) => !prevState)}
       className={className}
       role="switch"
       aria-checked={active}
