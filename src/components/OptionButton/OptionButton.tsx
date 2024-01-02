@@ -74,7 +74,7 @@ function OptionButton({
   text,
   className,
 }: OptionButtonProps): React.ReactNode {
-  const [active, setActive] = useStorage(id, false);
+  const [active, setActive] = useStorage<boolean>(id, false);
 
   return (
     <OptionButtonContainer
