@@ -55,19 +55,32 @@ describe('GeneralSection', () => {
     expect(mockSetStorage).toHaveBeenCalled();
   });
 
-  test('calls setStorage when clicking element', async () => {
+  test('calls setStorage when clicking element and re-renders', async () => {
     const settings = [
       { storageId: 'setting1', name: 'Setting 1', css: '.class {}' },
-      { storageId: 'setting2', name: 'Setting 2', css: '.class {}' },
     ];
     const { getByText } = render(
       <Section name="example" settings={settings} />,
     );
     const user = userEvent.setup();
 
-    const element = getByText('Setting 1');
+    // check if element shows it is disabled, because default mock of useStorage currently returns false
+    const switchElementDisabled = screen.getByLabelText('Setting 1');
+    expect(switchElementDisabled).toHaveAttribute('aria-checked', 'false');
 
+    // change mock, so that on the next state update, the switch should be marked as active, because the mock now returns true
+    jest.mock('@plasmohq/storage/hook', () => ({
+      useStorage: jest
+        .fn()
+        .mockReturnValue([true, (...args) => mockSetStorage(...args)]),
+    }));
+
+    const element = getByText('Setting 1');
     await user.click(element);
+
+    const switchElementActive = screen.getByLabelText('Setting 1');
+    expect(switchElementActive).toHaveAttribute('aria-checked', 'true');
+
     expect(mockSetStorage).toHaveBeenCalled();
   });
 });
