@@ -1,31 +1,45 @@
+import { jest } from '@jest/globals';
 import userEvent from '@testing-library/user-event';
+
+import { useStorage } from '@plasmohq/storage/hook';
 
 import { render, screen } from '../../../test-utils';
 import OptionButton from './OptionButton';
 
-test('renders with correct text', () => {
-  render(<OptionButton text="Option 1" active={false} />);
-  const option = screen.getByText('Option 1');
-  expect(option).toBeInTheDocument();
-});
+jest.mock('@plasmohq/storage/hook', () => ({
+  useStorage: jest.fn(),
+}));
 
-test('displays states correct', () => {
-  const { rerender } = render(<OptionButton text="Option 1" active={true} />);
-  const active = screen.getByText(/active/i);
-  expect(active).toBeInTheDocument();
+describe('OptionButton component', () => {
+  beforeAll(() => {
+    (useStorage as jest.Mock).mockImplementation(() => [
+      true,
+      jest.fn().mockImplementation((key, defaultValue) => true),
+    ]);
+  });
 
-  rerender(<OptionButton text="Option 1" active={false} />);
-  const disabled = screen.getByText(/disabled/i);
-  expect(disabled).toBeInTheDocument();
-});
+  test('renders with correct text', () => {
+    render(<OptionButton text="Option 1" id="opt1" />);
+    const option = screen.getByText('Option 1');
+    expect(option).toBeInTheDocument();
+  });
 
-test('onClick is called, when clicking the element', async () => {
-  const mockFunc = jest.fn();
-  render(<OptionButton text="Option 1" active={false} onClick={mockFunc} />);
+  test('displays states correct', () => {
+    (useStorage as jest.Mock).mockImplementation(() => [
+      true,
+      jest.fn().mockImplementation((key, defaultValue) => true),
+    ]);
 
-  const option = screen.getByRole('switch');
-  const user = userEvent.setup();
-  await user.click(option);
+    const { rerender } = render(<OptionButton text="Option 1" id="opt1" />);
+    const active = screen.getByText(/active/i);
+    expect(active).toBeInTheDocument();
 
-  expect(mockFunc).toHaveBeenCalledTimes(1);
+    (useStorage as jest.Mock).mockImplementation(() => [
+      false,
+      jest.fn().mockImplementation((key, defaultValue) => true),
+    ]);
+    rerender(<OptionButton text="Option 1" id="opt1" />);
+    const disabled = screen.getByText(/disabled/i);
+    expect(disabled).toBeInTheDocument();
+  });
 });
