@@ -1,3 +1,4 @@
+import restoreSettings from './restoreSettings';
 import setupListeners from './setupListeners';
 
-export default setupListeners;
+export { setupListeners, restoreSettings };

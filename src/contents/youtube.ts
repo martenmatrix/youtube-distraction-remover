@@ -2,7 +2,7 @@ import type { PlasmoCSConfig } from 'plasmo';
 
 import { Storage } from '@plasmohq/storage';
 
-import setupListeners from '~listener';
+import { setupListeners } from '~listener';
 
 export const config: PlasmoCSConfig = {
   matches: ['*://www.youtube.com/*'],
