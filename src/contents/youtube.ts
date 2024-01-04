@@ -7,7 +7,7 @@ import setupListeners from '~listener';
 export const config: PlasmoCSConfig = {
   matches: ['*://www.youtube.com/*'],
   run_at: 'document_start',
-  world: 'MAIN',
+  // Executing in MAIN world, will disable Chrome Extensions API => Storage API disabled
 };
 
 console.warn('YouTube Distraction Remover: Listeners were setup');
