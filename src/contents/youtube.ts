@@ -2,7 +2,8 @@ import type { PlasmoCSConfig } from 'plasmo';
 
 import { Storage } from '@plasmohq/storage';
 
-import { setupListeners } from '~listener';
+import { restoreSettings, setupListeners } from '~listener';
+import styleSettings from '~styleSettings';
 
 export const config: PlasmoCSConfig = {
   matches: ['*://www.youtube.com/*'],
@@ -12,4 +13,5 @@ export const config: PlasmoCSConfig = {
 
 console.warn('YouTube Distraction Remover: Listeners were setup');
 const storage: Storage = new Storage();
-setupListeners(storage);
+restoreSettings(storage, styleSettings).catch((e) => console.error(e));
+setupListeners(storage, styleSettings);
