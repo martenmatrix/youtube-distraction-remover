@@ -20,6 +20,10 @@ describe('restoreSettings function', () => {
     },
   ];
 
+  beforeEach(() => {
+    (editStylesheet as jest.Mock).mockClear();
+  });
+
   it('call editStylesheet when a setting is active', async () => {
     const mockStorage = {
       get: async (key) => {
@@ -32,7 +36,27 @@ describe('restoreSettings function', () => {
     expect(editStylesheet).toHaveBeenCalledWith(true, 'some css {}');
   });
 
-  it('does not call editStylesheet when a setting is disabled', () => {});
+  it('does not call editStylesheet when a setting is disabled', async () => {
+    const mockStorage = {
+      get: async (key) => {
+        return Promise.resolve(false);
+      },
+    } as unknown as BaseStorage;
 
-  it('does not call editStylesheet when a setting is null', () => {});
+    await restoreSettings(mockStorage, mockStyleSettings);
+
+    expect(editStylesheet).not.toHaveBeenCalled();
+  });
+
+  it('does not call editStylesheet when a setting is null', async () => {
+    const mockStorage = {
+      get: async (key) => {
+        return Promise.resolve(null);
+      },
+    } as unknown as BaseStorage;
+
+    await restoreSettings(mockStorage, mockStyleSettings);
+
+    expect(editStylesheet).not.toHaveBeenCalled();
+  });
 });
