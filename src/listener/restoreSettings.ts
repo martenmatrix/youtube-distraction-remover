@@ -10,7 +10,7 @@ async function restoreSettings(
     const savedState = await storage.get<boolean>(setting.storageId);
 
     // check, if setting was previously active
-    // if disabled or not set nothings needs to be done, as the css is currently not applied
+    // if disabled or not set, nothing needs to be done, as the css is currently not applied
     if (savedState) {
       editStylesheet(savedState, setting.css);
     }
